@@ -61,6 +61,8 @@
     <Analyzer Include="D:\Unity\6000.0.29f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.UIToolkit.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\TrajectoryController.cs" />
+    <Compile Include="Assets\Scripts\StartPoint.cs" />
     <Compile Include="Assets\Ash Assets\Sim-Cade Vehicle Physics\Scripts\TireSmoke.cs" />
     <Compile Include="Assets\Ash Assets\Sim-Cade Vehicle Physics\Scripts\AudioSystem.cs" />
     <Compile Include="Assets\Ash Assets\Sim-Cade Vehicle Physics\Scripts\Skidmarks.cs" />
@@ -69,7 +71,10 @@
     <Compile Include="Assets\Ash Assets\Sim-Cade Vehicle Physics\Scripts\WheelSkid.cs" />
     <Compile Include="Assets\Ash Assets\Sim-Cade Vehicle Physics\Scripts\SimcadeVehicleController.cs" />
     <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
+    <Compile Include="Assets\Scripts\TrajectoryRecorder.cs" />
     <Compile Include="Assets\Scripts\UIController.cs" />
+    <Compile Include="Assets\Scripts\TrajectoryReplayer.cs" />
+    <Compile Include="Assets\Scripts\TrajectoryData.cs" />
     <Compile Include="Assets\Scripts\LevelController.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -1079,12 +1084,12 @@
       <HintPath>Library\ScriptAssemblies\Unity.Searcher.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Unity.Rider.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.Rider.Editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="Unity.AI.Navigation">
       <HintPath>Library\ScriptAssemblies\Unity.AI.Navigation.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Rider.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.Rider.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.RenderPipeline.Universal.ShaderLibrary">
@@ -1207,12 +1212,12 @@
       <HintPath>Library\ScriptAssemblies\Unity.AI.Navigation.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Unity.Mathematics">
-      <HintPath>Library\ScriptAssemblies\Unity.Mathematics.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="Cinemachine">
       <HintPath>Library\ScriptAssemblies\Cinemachine.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Mathematics">
+      <HintPath>Library\ScriptAssemblies\Unity.Mathematics.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.RenderPipelines.Core.Editor">

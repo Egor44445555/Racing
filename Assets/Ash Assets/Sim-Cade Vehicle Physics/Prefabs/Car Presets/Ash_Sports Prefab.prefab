@@ -348,6 +348,8 @@ GameObject:
   - component: {fileID: 1417145683292037645}
   - component: {fileID: 1417145683292037644}
   - component: {fileID: 1417145683292037635}
+  - component: {fileID: 1949191050427568596}
+  - component: {fileID: 3379980137776980498}
   m_Layer: 0
   m_Name: Ash_Sports Prefab
   m_TagString: Untagged
@@ -824,6 +826,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e63e9b5fd272649499f3444be7c348de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1949191050427568596
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1417145683292037634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b252634bdabe8a3478866ded178d2f1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  carPrefab: {fileID: 8023859123891617444, guid: 7dc9294db15ef264aa3391d24f276920, type: 3}
+--- !u!114 &3379980137776980498
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1417145683292037634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8379647abe780049b546760496b4bf4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isRecording: 0
 --- !u!1 &1417145683384164879
 GameObject:
   m_ObjectHideFlags: 0
@@ -939,7 +967,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -1450,8 +1478,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1417145684872801786}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.9992303, z: -1e-45, w: 0.039227217}
-  m_LocalPosition: {x: -0.4311676, y: 0, z: 5.483078}
+  m_LocalRotation: {x: 8.730357e-19, y: 0.00048133847, z: -6.1370856e-19, w: 0.9999999}
+  m_LocalPosition: {x: -0.0052950755, y: 0, z: -5.5000024}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1482,7 +1510,7 @@ MonoBehaviour:
     FieldOfView: 80
     OrthographicSize: 5
     NearClipPlane: 0.3
-    FarClipPlane: 1000
+    FarClipPlane: 5000
     Dutch: 0
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
@@ -1509,7 +1537,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44d70cc20219cd84593f67d248eafe36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Offset: {x: 0, y: 3, z: -1.63}
+  m_Offset: {x: 0, y: 1.5, z: -0.44}
   m_ApplyAfter: 0
   m_PreserveComposition: 1
 --- !u!1 &1766110457114240245
@@ -1938,7 +1966,7 @@ GameObject:
   - component: {fileID: 2330088695272192478}
   m_Layer: 0
   m_Name: Body
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
