@@ -8,9 +8,9 @@ public class TrajectoryRecorder : MonoBehaviour
     int recordCount = 0;
     float recordingStartTime;
 
-    void Start()
+    void Awake()
     {
-        recordedPoints = new TrajectoryPoint[1000];
+        recordedPoints = new TrajectoryPoint[10000];
     }
 
     public void StartRecording()
@@ -18,30 +18,63 @@ public class TrajectoryRecorder : MonoBehaviour
         recordCount = 0;
         recordingStartTime = Time.time;
         isRecording = true;
+
+        if (recordedPoints == null || recordedPoints.Length == 0)
+        {
+            recordedPoints = new TrajectoryPoint[10000];
+        }
     }
 
-    void FixedUpdate()
+    void Update()
     {
         if (!isRecording) return;
 
-        // Increase the buffer if necessary
+        // #if UNITY_WEBGL
+        //     if (Time.frameCount % 2 == 0) return;
+        // #endif
+
         if (recordCount >= recordedPoints.Length)
         {
-            Array.Resize(ref recordedPoints, recordedPoints.Length * 2);
+            Debug.LogWarning("Recording buffer full");
+            isRecording = false;
+            return;
         }
 
-        var rb = GetComponent<Rigidbody>();
-        recordedPoints[recordCount++] = new TrajectoryPoint(
-            Time.time - recordingStartTime,
-            transform,
-            rb != null ? rb.linearVelocity : Vector3.zero
-        );
+        try
+        {
+            var rb = GetComponent<Rigidbody>();
+            recordedPoints[recordCount] = new TrajectoryPoint(Time.time - recordingStartTime, transform, rb != null ? rb.linearVelocity : Vector3.zero);
+            recordCount++;
+        }
+        catch (Exception e)
+        {
+            Debug.LogError($"Recording failed: {e.Message}");
+            isRecording = false;
+        }
     }
 
     public TrajectoryPoint[] GetRecordedTrajectory()
     {
+        if (recordedPoints == null || recordCount == 0)
+        {
+            Debug.LogWarning("No points recorded - returning empty array");
+            return new TrajectoryPoint[0];
+        }
+
         var result = new TrajectoryPoint[recordCount];
-        Array.Copy(recordedPoints, result, recordCount);
-        return result;
+        
+        try
+        {
+            for (int i = 0; i < recordCount; i++)
+            {
+                result[i] = recordedPoints[i];
+            }
+            return result;
+        }
+        catch (Exception e)
+        {
+            Debug.LogError($"Trajectory copy failed: {e.Message}");
+            return new TrajectoryPoint[0];
+        }
     }
 }

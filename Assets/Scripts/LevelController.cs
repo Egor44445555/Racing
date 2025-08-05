@@ -7,12 +7,10 @@ public class LevelController : MonoBehaviour
 
     int maxCircles = 2;
     int currentCircle = 0;
-    TrajectoryController trajectoryController;
 
     void Awake()
     {
         main = this;
-        trajectoryController = TrajectoryController.main;
     }
 
     public void GameOver()
@@ -37,12 +35,12 @@ public class LevelController : MonoBehaviour
 
         if (currentCircle == 1)
         {
-            trajectoryController.StartRecordPath();
+            TrajectoryController.main.StartRecordPath();
         }
 
         if (currentCircle == 2)
         {
-            trajectoryController.CreateGhostCar();
+            TrajectoryController.main.CreateGhostCar();
         }
         
         if (currentCircle > maxCircles)

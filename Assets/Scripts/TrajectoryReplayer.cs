@@ -7,55 +7,43 @@ public class TrajectoryReplayer : MonoBehaviour
     float replayStartTime;
     bool isReplaying = false;
 
-    void Update()
+    public void InitializeReplay(TrajectoryPoint[] points)
     {
-        if (!isReplaying || trajectoryPoints == null || trajectoryPoints.Length == 0)
-            return;
-
-        float currentTime = Time.time - replayStartTime;
-
-        // Protection against array overflow
-        if (currentPointIndex >= trajectoryPoints.Length - 1)
+        if (points == null || points.Length == 0)
         {
-            FinishReplay();
+            Debug.LogError("Cannot replay - no trajectory points");
             return;
         }
 
+        trajectoryPoints = points;
+        currentPointIndex = 0;
+        replayStartTime = Time.time;
+        isReplaying = true;
+        Debug.Log($"Replay initialized with {points.Length} points");
+    }
+
+    void Update()
+    {
+        if (!isReplaying || trajectoryPoints == null) return;
+
+        float currentTime = Time.time - replayStartTime;
+        
         // Find the current trajectory point
         while (currentPointIndex < trajectoryPoints.Length - 1 && trajectoryPoints[currentPointIndex + 1].time <= currentTime)
         {
             currentPointIndex++;
         }
 
-        if (currentPointIndex < trajectoryPoints.Length - 1)
+        if (currentPointIndex < trajectoryPoints.Length)
         {
-            float segmentDuration = trajectoryPoints[currentPointIndex + 1].time - trajectoryPoints[currentPointIndex].time;
-            float t = Mathf.Clamp01((currentTime - trajectoryPoints[currentPointIndex].time) / Mathf.Max(0.001f, segmentDuration));
-
-            transform.position = Vector3.Lerp(
-                trajectoryPoints[currentPointIndex].position,
-                trajectoryPoints[currentPointIndex + 1].position,
-                t);
-
-            transform.rotation = Quaternion.Lerp(
-                trajectoryPoints[currentPointIndex].Rotation,
-                trajectoryPoints[currentPointIndex + 1].Rotation,
-                t);
+            transform.position = trajectoryPoints[currentPointIndex].position;
+            transform.rotation = trajectoryPoints[currentPointIndex].Rotation;
         }
         else
         {
-            FinishReplay();
+            isReplaying = false;
+            Debug.Log("Replay finished");
         }
-    }
-
-    void FinishReplay()
-    {
-        if (trajectoryPoints.Length > 0)
-        {
-            transform.position = trajectoryPoints[^1].position;
-            transform.rotation = trajectoryPoints[^1].Rotation;
-        }
-        isReplaying = false;
     }
 
     public void StartReplay(TrajectoryPoint[] points)

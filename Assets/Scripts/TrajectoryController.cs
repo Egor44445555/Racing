@@ -4,7 +4,7 @@ public class TrajectoryController : MonoBehaviour
 {
     public static TrajectoryController main;
     public GameObject carPrefab;
-    
+
     TrajectoryRecorder recorder;
     GameObject ghostCar;
 
@@ -12,7 +12,7 @@ public class TrajectoryController : MonoBehaviour
     {
         main = this;
     }
-    
+
     void Start()
     {
         recorder = GetComponent<TrajectoryRecorder>();
@@ -30,25 +30,38 @@ public class TrajectoryController : MonoBehaviour
 
     public void CreateGhostCar()
     {
-        // Delete old ghost car
         if (ghostCar != null)
         {
             Destroy(ghostCar);
         }
 
         var trajectory = recorder.GetRecordedTrajectory();
+
         if (trajectory == null || trajectory.Length == 0)
         {
-            Debug.LogError("No trajectory recorded");
+            Debug.LogError("Cannot create ghost - no trajectory recorded");
             return;
         }
 
-        // Create ghost
-        ghostCar = Instantiate(carPrefab, trajectory[0].position, Quaternion.Euler(trajectory[0].rotationEuler));
+        try
+        {
+            ghostCar = Instantiate(
+                carPrefab,
+                trajectory[0].position,
+                trajectory[0].Rotation
+            );
 
-        var replayer = ghostCar.AddComponent<TrajectoryReplayer>();
-
-        // Start playback        
-        ghostCar.AddComponent<TrajectoryReplayer>().StartReplay(trajectory);
+            SetupGhostCar(ghostCar, trajectory);
+        }
+        catch (System.Exception e)
+        {
+            Debug.LogError($"Ghost car creation failed: {e.Message}");
+        }
+    }
+    
+    void SetupGhostCar(GameObject ghost, TrajectoryPoint[] trajectory)
+    {
+        var replayer = ghost.AddComponent<TrajectoryReplayer>();
+        replayer.InitializeReplay(trajectory);
     }
 }

@@ -6,8 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/CityMap.unity
-    guid: ec2395b97469b4a4a86fd8a4bc8f36d1
+    path: Assets/Scenes/Racing.unity
+    guid: 71d7712d77bf90641afc0a7be77be0f3
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

@@ -16,9 +16,17 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1417145683279419049, guid: 87af1d4c660c09249b2a3621aeab020f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.522
+      objectReference: {fileID: 0}
     - target: {fileID: 1417145683292037634, guid: 87af1d4c660c09249b2a3621aeab020f, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 1417145683292037640, guid: 87af1d4c660c09249b2a3621aeab020f, type: 3}
+      propertyPath: m_Mass
+      value: 6000
       objectReference: {fileID: 0}
     - target: {fileID: 1417145683292037641, guid: 87af1d4c660c09249b2a3621aeab020f, type: 3}
       propertyPath: VehicleEvents.OnGearChange.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
@@ -126,19 +134,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1417145684872801787, guid: 87af1d4c660c09249b2a3621aeab020f, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9923487
+      value: 0.9999867
       objectReference: {fileID: 0}
     - target: {fileID: 1417145684872801787, guid: 87af1d4c660c09249b2a3621aeab020f, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.123359926
+      value: 0.0000000059933547
       objectReference: {fileID: 0}
     - target: {fileID: 1417145684872801787, guid: 87af1d4c660c09249b2a3621aeab020f, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.0051175826
+      value: -0.005156638
       objectReference: {fileID: 0}
     - target: {fileID: 1417145684872801787, guid: 87af1d4c660c09249b2a3621aeab020f, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0006361704
+      value: 0.000000003220972
       objectReference: {fileID: 0}
     - target: {fileID: 2248773442207206033, guid: 87af1d4c660c09249b2a3621aeab020f, type: 3}
       propertyPath: m_IsActive
